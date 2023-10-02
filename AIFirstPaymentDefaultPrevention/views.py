@@ -39,9 +39,9 @@ def predict_pinjaman(request):
 
         kredit_df = df[new_column_order]
         
-        scaler = joblib.load('../savedmodel/kredit_pinjaman_scaler.joblib')
+        scaler = joblib.load('savedmodel/kredit_pinjaman_scaler.joblib')
         scaled_df = scaler.transform(kredit_df)
-        model = joblib.load('../savedmodel/kredit_pinjaman.joblib')
+        model = joblib.load('savedmodel/kredit_pinjaman.joblib')
         default_score = model.predict(scaled_df)
         df['default_score'] = default_score
         default_potential_cal = PotentialDefaultCalculator()
@@ -50,9 +50,9 @@ def predict_pinjaman(request):
         solution_df = solution_preprocessing.fit_transform(solution_df)
         cat_encoder = CategoricalEncoder()
         solution_df = cat_encoder.fit_transform(solution_df)
-        solution_scaler = joblib.load('../savedmodel/kredit_pinjaman_solution_scaler.joblib')
+        solution_scaler = joblib.load('savedmodel/kredit_pinjaman_solution_scaler.joblib')
         solution_df = solution_scaler.transform(solution_df)
-        solution_model = joblib.load('../savedmodel/kredit_pinjaman_solution.joblib')
+        solution_model = joblib.load('savedmodel/kredit_pinjaman_solution.joblib')
         solution_given = solution_model.predict(solution_df)
 
 
@@ -101,9 +101,9 @@ def predict_benda(request):
 
         kredit_df = df[new_column_order]
         
-        scaler = joblib.load('../savedmodel/kredit_benda_scaler.joblib')
+        scaler = joblib.load('savedmodel/kredit_benda_scaler.joblib')
         scaled_df = scaler.transform(kredit_df)
-        model = joblib.load('../savedmodel/kredit_benda.joblib')
+        model = joblib.load('savedmodel/kredit_benda.joblib')
         default_score = model.predict(scaled_df)
         df['default_score'] = default_score
         default_potential_cal = PotentialDefaultCalculator()
@@ -112,9 +112,9 @@ def predict_benda(request):
         solution_df = solution_preprocessing.fit_transform(solution_df)
         cat_encoder = CategoricalEncoder()
         solution_df = cat_encoder.fit_transform(solution_df)
-        solution_scaler = joblib.load('../savedmodel/kredit_benda_solution_scaler.joblib')
+        solution_scaler = joblib.load('savedmodel/kredit_benda_solution_scaler.joblib')
         solution_df = solution_scaler.transform(solution_df)
-        solution_model = joblib.load('../savedmodel/kredit_benda_solution.joblib')
+        solution_model = joblib.load('savedmodel/kredit_benda_solution.joblib')
         solution_given = solution_model.predict(solution_df)
 
 
